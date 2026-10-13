@@ -3,5 +3,6 @@ Please always provide the [GitHub issue(s)](../issues) your PR is for, as well a
 Fix #<gh-issue-id>
 
 Test URLs:
+
 - Before: https://main--inter-project-boilerplate--arthurluna05.aem.live/
 - After: https://<branch>--inter-project-boilerplate--arthurluna05.aem.live/
