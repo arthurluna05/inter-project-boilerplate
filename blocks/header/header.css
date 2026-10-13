@@ -34,11 +34,11 @@ header nav .nav-sections ul > li > ul {
     margin-top: 0;
 }
 
-    .nav-sections .default-content-wrapper > ul:last-child {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-        margin-left: 70px;
+.nav-sections .default-content-wrapper > ul:last-child {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-left: 100px;
     }
 
 header nav[aria-expanded="true"] {
@@ -359,13 +359,15 @@ header nav .nav-sections .nav-drop > button[aria-expanded="false"] + ul {
         }
     }
 
-    @media (width >= 900px) {
-        .nav-sections .default-content-wrapper > ul:last-child {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-        }
-    }
+@media (width >= 900px) {
+  .nav-sections .default-content-wrapper > ul:last-child {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-left: auto;
+    padding-left: 80px;
+  }
+}
 
 
 
