@@ -13,7 +13,9 @@
 /* eslint-env browser */
 function sampleRUM(checkpoint, data) {
   // eslint-disable-next-line max-len
-  const timeShift = () => (window.performance ? window.performance.now() : Date.now() - window.hlx.rum.firstReadTime);
+  const timeShift = () => (window.performance
+    ? window.performance.now()
+    : Date.now() - window.hlx.rum.firstReadTime);
   try {
     window.hlx = window.hlx || {};
     if (!window.hlx.rum || !window.hlx.rum.collector) {
@@ -40,7 +42,9 @@ function sampleRUM(checkpoint, data) {
         weight,
         id,
         isSelected,
-        firstReadTime: window.performance ? window.performance.timeOrigin : Date.now(),
+        firstReadTime: window.performance
+          ? window.performance.timeOrigin
+          : Date.now(),
         sampleRUM,
         queue: [],
         collector: (...args) => window.hlx.rum.queue.push(args),
@@ -107,7 +111,10 @@ function sampleRUM(checkpoint, data) {
         });
 
         window.addEventListener('securitypolicyviolation', (e) => {
-          if (e.blockedURI.includes('helix-rum-enhancer') && e.disposition === 'enforce') {
+          if (
+            e.blockedURI.includes('helix-rum-enhancer')
+            && e.disposition === 'enforce'
+          ) {
             const errData = {
               source: 'csp',
               target: e.blockedURI,
@@ -116,7 +123,8 @@ function sampleRUM(checkpoint, data) {
           }
         });
 
-        sampleRUM.baseURL = sampleRUM.baseURL || new URL(window.RUM_BASE || '/', new URL('https://ot.aem.live'));
+        sampleRUM.baseURL = sampleRUM.baseURL
+          || new URL(window.RUM_BASE || '/', new URL('https://ot.aem.live'));
         sampleRUM.collectBaseURL = sampleRUM.collectBaseURL || sampleRUM.baseURL;
         sampleRUM.sendPing = (ck, time, pingData = {}) => {
           const uaExtra = navigator.webdriver && !navigator.userAgent.includes('+http')
@@ -173,7 +181,9 @@ function sampleRUM(checkpoint, data) {
     if (window.hlx.rum && window.hlx.rum.isSelected && checkpoint) {
       window.hlx.rum.collector(checkpoint, data, timeShift());
     }
-    document.dispatchEvent(new CustomEvent('rum', { detail: { checkpoint, data } }));
+    document.dispatchEvent(
+      new CustomEvent('rum', { detail: { checkpoint, data } }),
+    );
   } catch (error) {
     // something went awry
   }
@@ -196,7 +206,10 @@ function setup(importUrl = import.meta.url) {
  */
 function init() {
   setup();
-  sampleRUM.collectBaseURL = new URL(`${window.hlx.codeBasePath}/`, window.origin);
+  sampleRUM.collectBaseURL = new URL(
+    `${window.hlx.codeBasePath}/`,
+    window.origin,
+  );
   sampleRUM();
 }
 
@@ -338,9 +351,14 @@ function createOptimizedPicture(
   src,
   alt = '',
   eager = false,
-  breakpoints = [{ media: '(min-width: 600px)', width: '2000' }, { width: '750' }],
+  breakpoints = [
+    { media: '(min-width: 600px)', width: '2000' },
+    { width: '750' },
+  ],
 ) {
-  const url = !src.startsWith('http') ? new URL(src, window.location.href) : new URL(src);
+  const url = !src.startsWith('http')
+    ? new URL(src, window.location.href)
+    : new URL(src);
   const picture = document.createElement('picture');
   const { origin, pathname } = url;
   const ext = pathname.split('.').pop();
@@ -427,7 +445,9 @@ function wrapTextNodes(block) {
   block.querySelectorAll(':scope > div > div').forEach((blockColumn) => {
     if (blockColumn.hasChildNodes()) {
       const hasWrapper = !!blockColumn.firstElementChild
-        && validWrappers.some((tagName) => blockColumn.firstElementChild.tagName === tagName);
+        && validWrappers.some(
+          (tagName) => blockColumn.firstElementChild.tagName === tagName,
+        );
       if (!hasWrapper) {
         wrap(blockColumn);
       } else if (
@@ -538,7 +558,9 @@ async function loadBlock(block) {
     block.dataset.blockStatus = 'loading';
     const { blockName } = block.dataset;
     try {
-      const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
+      const cssLoaded = loadCSS(
+        `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`,
+      );
       const decorationComplete = new Promise((resolve) => {
         (async () => {
           try {

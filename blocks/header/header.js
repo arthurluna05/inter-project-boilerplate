@@ -13,7 +13,9 @@ function closeOnEscape(e) {
     const nav = document.getElementById('nav');
     const navSections = nav.querySelector('.nav-sections');
     if (!navSections) return;
-    const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
+    const navSectionExpanded = navSections.querySelector(
+      '[aria-expanded="true"]',
+    );
     if (navSectionExpanded && isDesktop.matches) {
       // eslint-disable-next-line no-use-before-define
       toggleAllNavSections(navSections);
@@ -35,7 +37,9 @@ function closeOnFocusLost(e) {
   if (!nav.contains(e.relatedTarget)) {
     const navSections = nav.querySelector('.nav-sections');
     if (!navSections) return;
-    const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
+    const navSectionExpanded = navSections.querySelector(
+      '[aria-expanded="true"]',
+    );
     if (navSectionExpanded && isDesktop.matches) {
       // eslint-disable-next-line no-use-before-define
       toggleAllNavSections(navSections, false);
@@ -65,14 +69,22 @@ function toggleAllNavSections(sections, expanded = false) {
  * @param {*} forceExpanded Optional param to force nav expand behavior when not null
  */
 function toggleMenu(nav, navSections, forceExpanded = null) {
-  const expanded = forceExpanded !== null ? !forceExpanded : nav.getAttribute('aria-expanded') === 'true';
+  const expanded = forceExpanded !== null
+    ? !forceExpanded
+    : nav.getAttribute('aria-expanded') === 'true';
   const button = nav.querySelector('.nav-hamburger button');
-  document.body.style.overflowY = (expanded || isDesktop.matches) ? '' : 'hidden';
+  document.body.style.overflowY = expanded || isDesktop.matches ? '' : 'hidden';
   // the desktop nav is always expanded, so aria-expanded only applies to the mobile menu
   if (isDesktop.matches) nav.removeAttribute('aria-expanded');
   else nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-  toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
-  button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
+  toggleAllNavSections(
+    navSections,
+    expanded || isDesktop.matches ? 'false' : 'true',
+  );
+  button.setAttribute(
+    'aria-label',
+    expanded ? 'Open navigation' : 'Close navigation',
+  );
 
   // enable menu collapse on escape keypress
   if (!expanded || isDesktop.matches) {
@@ -127,27 +139,29 @@ export default async function decorate(block) {
 
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
-    navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
-      const subList = navSection.querySelector(':scope > ul');
-      if (!subList) return;
-      navSection.classList.add('nav-drop');
-      // wrap the dropdown label in a button so it is announced as expandable
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.setAttribute('aria-expanded', false);
-      [...navSection.childNodes].forEach((node) => {
-        if (node !== subList) button.append(node);
+    navSections
+      .querySelectorAll(':scope .default-content-wrapper > ul > li')
+      .forEach((navSection) => {
+        const subList = navSection.querySelector(':scope > ul');
+        if (!subList) return;
+        navSection.classList.add('nav-drop');
+        // wrap the dropdown label in a button so it is announced as expandable
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.setAttribute('aria-expanded', false);
+        [...navSection.childNodes].forEach((node) => {
+          if (node !== subList) button.append(node);
+        });
+        navSection.prepend(button);
+        button.addEventListener('click', () => {
+          const expanded = button.getAttribute('aria-expanded') === 'true';
+          if (isDesktop.matches) {
+            button.focus();
+            toggleAllNavSections(navSections);
+          }
+          button.setAttribute('aria-expanded', !expanded);
+        });
       });
-      navSection.prepend(button);
-      button.addEventListener('click', () => {
-        const expanded = button.getAttribute('aria-expanded') === 'true';
-        if (isDesktop.matches) {
-          button.focus();
-          toggleAllNavSections(navSections);
-        }
-        button.setAttribute('aria-expanded', !expanded);
-      });
-    });
   }
 
   // hamburger for mobile
