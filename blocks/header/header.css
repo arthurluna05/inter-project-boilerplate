@@ -1,9 +1,11 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
   width: 100%;
-  z-index: 2;
-  position: fixed;
+  z-index: 20;
 }
 
 header nav {
@@ -14,11 +16,13 @@ header nav {
     'sections sections sections' 1fr / auto 1fr auto;
   align-items: center;
   gap: 0 24px;
+  font-family: Inter, Helvetica, sans-serif;
   margin: auto;
+  margin-left: 100px;
   max-width: 1248px;
-  height: var(--nav-height);
+  height: 80px;
+  max-width: 1500px;
   padding: 0 24px;
-  font-family: var(--body-font-family);
 }
 
 header nav[aria-expanded='true'] {
@@ -30,6 +34,13 @@ header nav[aria-expanded='true'] {
   min-height: 100dvh;
 }
 
+header a.button.primary,
+header .button.primary {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 @media (width >= 900px) {
   header .nav-wrapper {
     position: relative;
@@ -39,8 +50,8 @@ header nav[aria-expanded='true'] {
     display: flex;
     justify-content: space-between;
     gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
+    max-width: 1440px;
+    padding: 0 64px;
   }
 }
 
@@ -144,7 +155,7 @@ header .nav-brand {
 }
 
 header nav .nav-brand img {
-  width: 128px;
+  width: 180px;
   height: auto;
 }
 
@@ -225,9 +236,17 @@ header nav .nav-sections .nav-drop > button[aria-expanded='false'] + ul {
 
   header nav .nav-sections ul {
     display: flex;
-    gap: 24px;
+    gap: 48px;
     margin: 0;
   }
+
+  header nav .nav-sections > .default-content-wrapper > ul > li {
+  font-size: 22px;
+  letter-spacing: -.01em;
+  font-weight: 600;
+  line-height: 24px;
+  color: #000000;
+}
 
   header nav .nav-sections .default-content-wrapper > ul > li {
     flex: 0 1 auto;
@@ -243,13 +262,122 @@ header nav .nav-sections .nav-drop > button[aria-expanded='false'] + ul {
     display: block;
     position: absolute;
     left: -24px;
-    width: 200px;
+    width: 280px;
     top: 150%;
-    padding: 16px;
-    background-color: var(--light-color);
+    padding: 24px;
+    background: white;
+    border-radius: 16px;
+    box-shadow:0 10px 40px rgba(0,0,0,.12);
     white-space: initial;
   }
 
+  @media (width >= 900px) {
+
+  .nav-sections {
+    display: flex;
+    width: 100%;
+  }
+
+}
+
+@media (width >= 900px) {
+
+  .nav-sections > .default-content-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+}
+
+.nav-brand {
+  flex: 0 0 auto;
+}
+
+.nav-brand a {
+  display: flex;
+  align-items: center;
+}
+
+header .button.primary {
+  background: #ff7a00;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 56px;
+
+  padding: 0 32px;
+
+  border-radius: 9999px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  min-width: 210px;
+}
+
+header .button.primary:hover {
+  background: #eb6a00;
+}
+
+.nav-sections .nav-drop > button {
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;
+}
+
+.nav-tools > div > ul > li:first-child {
+  font-size: 18px;
+
+  font-weight: 600;
+}
+
+@media (width >= 900px) {
+
+  .nav-sections .default-content-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+}
+
+@media (width >= 900px) {
+
+  .nav-sections .default-content-wrapper > ul:first-child {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+  }
+
+}
+
+@media (width >= 900px) {
+
+  .nav-sections .default-content-wrapper > ul:last-child {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+}
+
+.nav-brand {
+  flex: 0 0 auto;
+}
+
+
+.nav-sections .default-content-wrapper > ul:last-child {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-left: 70px;
+}
   header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
     content: '';
     position: absolute;

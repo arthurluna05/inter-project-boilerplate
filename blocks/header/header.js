@@ -109,10 +109,20 @@ export default async function decorate(block) {
   });
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
-  if (brandLink) {
-    brandLink.className = '';
-    brandLink.closest('.button-container').className = '';
+
+  if (navBrand) {
+    navBrand.textContent = '';
+
+    const logoLink = document.createElement('a');
+    logoLink.href = '/';
+
+    const logo = document.createElement('img');
+    logo.src = '/icons/inter.svg';
+    logo.alt = 'Inter logo';
+    logo.className = 'inter-logo';
+
+    logoLink.appendChild(logo);
+    navBrand.appendChild(logoLink);
   }
 
   const navSections = nav.querySelector('.nav-sections');
