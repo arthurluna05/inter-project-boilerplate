@@ -1,12 +1,14 @@
+/* stylelint-disable no-descending-specificity */
+
 footer {
-    background-color: var(--light-color);
-    font-size: var(--body-font-size-xs);
+  background: #222;
+  color: #fff;
 }
 
 footer .footer > div {
-    margin: auto;
-    max-width: 1200px;
-    padding: 40px 24px 24px;
+  margin: auto;
+  max-width: 1320px;
+  padding: 64px;
 }
 
 footer .footer p {
@@ -17,4 +19,106 @@ footer .footer p {
     footer .footer > div {
         padding: 40px 32px 24px;
     }
+}
+
+footer .columns > div {
+  display: grid;
+  grid-template-columns: 320px 1fr 1fr 320px;
+  gap: 48px;
+  align-items: start;
+}
+
+footer .columns p {
+  margin-bottom: 20px;
+}
+
+.columns > div > div:first-child {
+  max-width: 320px;
+}
+
+
+footer .columns h3 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+footer .columns p,
+footer .columns a {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+footer .footer a,
+footer .footer a:any-link {
+  color: #fff !important;
+  text-decoration: none;
+}
+
+footer a:hover,
+footer a:any-link:hover {
+  color: #ff7a00 !important;
+  opacity: 1;
+  transition: color .2s ease;
+}
+
+
+footer .default-content-wrapper:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 24px;
+  font-size: 12px;
+}
+
+footer p:has(.icon-inter-logo) {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+footer .default-content-wrapper:last-child p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+footer .default-content-wrapper:last-child p:nth-last-child(-n+3) {
+  flex-basis: 100%;
+}
+
+
+.icon-inter-logo,
+.icon-instagram,
+.icon-twitter {
+  margin-right: 20px;
+}
+
+footer .icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+
+footer strong {
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+footer .columns > div > div:first-child > * {
+  margin-bottom: 40px;
+}
+
+.icon-bureau img{
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+}
+
+.icon-applestore img,
+.icon-googleplay img {
+  width: 250px !important;
+  height: 50px !important;
+
 }

@@ -75,13 +75,82 @@
 }
 
 .hero .button.primary {
-    background: white !important;
-    color: #ff7a00 !important;
-    border: none !important;
-    box-shadow: none !important;
+    background: white ;
+    color: #ff7a00 ;
+    border: none ;
+    box-shadow: none ;
     border-radius: 999px;
     min-width: 280px;
     height: 77px;
     font-size: 25px;
     font-weight: 800;
+}
+
+.hero-pj .hero {
+  position: relative;
+  min-height: 810px;
+  overflow: hidden;
+}
+
+.hero-pj picture {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-pj img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-pj .hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 3%);
+  z-index: 2;
+}
+
+.hero-pj h2 {
+  position: absolute;
+  max-width: none;
+  white-space: nowrap;
+  z-index: 3;
+  left: 520px;
+  top: 390px;
+  width: auto;
+  color: white;
+  font-family: Citrina, Helvetica, sans-serif;
+  font-size: 48px;
+  font-weight: 350;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.hero-pj .button.primary {
+  background: white;
+  color: #ff7a00;
+  border: none;
+  box-shadow: none;
+  border-radius: 999px;
+  width: 370px;
+  height: 88px;
+  display: flex;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.hero-pj .button.primary:hover {
+  background: white !important;
+  color: #ff7a00 !important;
+  transform: none !important;
+}
+
+.hero-pj .button-wrapper {
+  position: absolute;
+  z-index: 3;
+  top: 490px;
+  left: 1000px;
+  margin: 0;
 }
