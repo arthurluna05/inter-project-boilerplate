@@ -2,10 +2,16 @@
 header .nav-wrapper {
     background: rgb(255 255 255 / 96%);
     backdrop-filter: blur(16px);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
-    z-index: 20;
+    z-index: 9999;
+}
+
+body {
+  padding-top: 80px;
 }
 
 header nav {
@@ -59,7 +65,7 @@ header .button.primary {
 
 @media (width >= 900px) {
     header .nav-wrapper {
-        position: relative;
+        position: fixed;
     }
 
     header nav {

@@ -5,10 +5,10 @@ function updateActiveSlide(slide) {
 
   const slides = block.querySelectorAll('.carousel-slide');
 
-    const fill = block.querySelector('.progress-fill');
-    if (fill) {
-        fill.style.height = `${((slideIndex + 1) / slides.length) * 100}%`;
-    }
+  const fill = block.querySelector('.progress-fill');
+  if (fill) {
+    fill.style.height = `${((slideIndex + 1) / slides.length) * 100}%`;
+  }
 
   slides.forEach((aSlide, idx) => {
     aSlide.setAttribute('aria-hidden', idx !== slideIndex);
@@ -20,7 +20,6 @@ function updateActiveSlide(slide) {
       }
     });
   });
-
 
   const indicators = block.querySelectorAll('.carousel-slide-indicator');
   indicators.forEach((indicator, idx) => {
@@ -43,12 +42,11 @@ function showSlide(block, slideIndex = 0) {
 
   const fill = block.querySelector('.progress-fill');
 
-if (fill) {
-  const percentage =
-    ((realSlideIndex + 1) / slides.length) * 100;
+  if (fill) {
+    const percentage = ((realSlideIndex + 1) / slides.length) * 100;
 
-  fill.style.height = `${percentage}%`;
-}
+    fill.style.height = `${percentage}%`;
+  }
 
   activeSlide.querySelectorAll('a').forEach((link) => link.removeAttribute('tabindex'));
   block.querySelector('.carousel-slides').scrollTo({
@@ -69,16 +67,16 @@ function bindEvents(block) {
     });
 
     block.addEventListener('wheel', (e) => {
-  e.preventDefault();
+      e.preventDefault();
 
-  const current = parseInt(block.dataset.activeSlide || 0, 10);
+      const current = parseInt(block.dataset.activeSlide || 0, 10);
 
-  if (e.deltaY > 0) {
-    showSlide(block, current + 1);
-  } else {
-    showSlide(block, current - 1);
-  }
-}, { passive: false });
+      if (e.deltaY > 0) {
+        showSlide(block, current + 1);
+      } else {
+        showSlide(block, current - 1);
+      }
+    }, { passive: false });
   });
 
   block.querySelector('.slide-prev').addEventListener('click', () => {
@@ -125,13 +123,13 @@ export default async function decorate(block) {
   const isSingleSlide = rows.length < 2;
 
   const placeholders = {
-  carousel: 'Carousel',
-  carouselSlideControls: 'Carousel Slide Controls',
-  previousSlide: 'Previous Slide',
-  nextSlide: 'Next Slide',
-  showSlide: 'Show Slide',
-  of: 'of',
-};
+    carousel: 'Carousel',
+    carouselSlideControls: 'Carousel Slide Controls',
+    previousSlide: 'Previous Slide',
+    nextSlide: 'Next Slide',
+    showSlide: 'Show Slide',
+    of: 'of',
+  };
 
   block.setAttribute('role', 'region');
   block.setAttribute('aria-roledescription', placeholders.carousel || 'Carousel');
@@ -141,15 +139,15 @@ export default async function decorate(block) {
 
   const progressBar = document.createElement('div');
 
-progressBar.className = 'progress-bar';
+  progressBar.className = 'progress-bar';
 
-progressBar.innerHTML = `
+  progressBar.innerHTML = `
   <div class="progress-track">
     <div class="progress-fill"></div>
   </div>
 `;
 
-container.append(progressBar);
+  container.append(progressBar);
 
   const slidesWrapper = document.createElement('ul');
   slidesWrapper.classList.add('carousel-slides');
