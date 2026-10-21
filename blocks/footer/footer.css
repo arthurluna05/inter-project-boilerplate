@@ -1,12 +1,14 @@
+/* stylelint-disable no-descending-specificity */
+
 footer {
-  background: #222222;
+  background: #222;
   color: #fff;
 }
 
 footer .footer > div {
-    margin: auto;
-    max-width: 1200px;
-    padding: 40px 24px 24px;
+  margin: auto;
+  max-width: 1320px;
+  padding: 64px;
 }
 
 footer .footer p {
@@ -34,15 +36,21 @@ footer .columns p {
   max-width: 320px;
 }
 
+
 footer .columns h3 {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.3;
-
   margin-bottom: 24px;
-
   color: #fff;
 }
+
+footer .columns p,
+footer .columns a {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
 footer .footer a,
 footer .footer a:any-link {
   color: #fff !important;
@@ -56,18 +64,6 @@ footer a:any-link:hover {
   transition: color .2s ease;
 }
 
-footer .columns p,
-footer .columns a {
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-footer .columns h3 {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-
 
 footer .default-content-wrapper:last-child {
   display: flex;
@@ -77,8 +73,10 @@ footer .default-content-wrapper:last-child {
   font-size: 12px;
 }
 
-footer .default-content-wrapper:last-child p:nth-last-child(-n+3) {
-  flex-basis: 100%;
+footer p:has(.icon-inter-logo) {
+  display: flex;
+  gap: 3px;
+  align-items: center;
 }
 
 footer .default-content-wrapper:last-child p {
@@ -88,11 +86,6 @@ footer .default-content-wrapper:last-child p {
 
 footer .default-content-wrapper:last-child p:nth-last-child(-n+3) {
   flex-basis: 100%;
-}
-
-footer .footer > div {
-  max-width: 1320px;
-  padding: 64px;
 }
 
 
@@ -107,11 +100,6 @@ footer .icon {
   align-items: center;
 }
 
-footer p:has(.icon-inter-logo) {
-  display: flex;
-  gap: 3px;
-  align-items: center;
-}
 
 footer strong {
   font-size: 18px;

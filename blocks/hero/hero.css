@@ -143,19 +143,14 @@
 
 .hero-pj .button.primary:hover {
   background: white !important;
-
   color: #ff7a00 !important;
-
   transform: none !important;
 }
 
 .hero-pj .button-wrapper {
   position: absolute;
-
   z-index: 3;
-
   top: 490px;
   left: 1000px;
-
   margin: 0;
 }

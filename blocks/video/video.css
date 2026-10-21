@@ -12,19 +12,16 @@ body {
   overflow: hidden;
 }
 
+.video-wrapper {
+  width: 100vw;
+  max-width: none !important;
+  margin: 0;
+}
 
 .video-container .video-wrapper {
   max-width: none !important;
   width: calc(100vw - 80px);
   margin: 0 auto;
-}
-
-.video-wrapper {
-  width: 100vw;
-
-  max-width: none !important;
-
-  margin: 0;
 }
 
 
@@ -56,7 +53,6 @@ body {
   font-size: 64px;
   line-height: 1.1;
   font-weight: 400;
-
   margin: 0;
 }
 
@@ -67,9 +63,7 @@ body {
 
 .video-content p:nth-child(2) {
   margin-top: 24px;
-
   font-size: 26px;
-
   color: #333;
 }
 
